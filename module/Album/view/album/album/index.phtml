@@ -1,0 +1,26 @@
+<?php
+$title = 'Mi música';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<p>
+    <a href="<?= $this->url('album', ['action' => 'add']) ?>">Añadir un album nuevo</a>
+</p>
+
+<table class="table">
+    <tr>
+        <th>Título</th>
+        <th>Artista</th>
+        <th>&nbsp;</th>
+    </tr>
+    <?php foreach ($albums as $album) : ?>
+        <tr>
+            <td><?= $this->escapeHtml($album->title) ?></td>
+            <td><?= $this->escapeHtml($album->artist) ?></td>
+            <td>
+                <a href="<?= $this->url('album', ['action' => 'edit', 'id' => $album->id]) ?>">Editar</a>
+                <a href="<?= $this->url('album', ['action' => 'delete', 'id' => $album->id]) ?>">Borrar</a>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+</table>
